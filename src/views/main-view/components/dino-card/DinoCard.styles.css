@@ -1,0 +1,25 @@
+.dino-card {
+  background: #2a2a2a; 
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+  box-sizing: border-box;
+}
+
+.dino-card img {
+  width: 100%;
+  height: 180px;      
+  object-fit: cover;  
+  border-radius: 4px;
+  background-color: #333; 
+  margin-bottom: 12px;
+}
+
+.dino-card h2 {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  min-height: 2.4em; 
+}  
