@@ -12,13 +12,33 @@ export const MainView = () => {
     goToNext,
     goToPrev,
     setCurrentPage,
+    dietFilter,
+    setDietFilter,
+    periodFilter,
+    setPeriodFilter,
+    regionFilter,
+    setRegionFilter,
+    categoryFilter,
+    setCategoryFilter,
+    onResetFilters,
   } = useDinos();
 
-  if (loading) return <div>Escabando fósiles</div>;
+  if (loading) return <div className="status-msg">Excavando fósiles...</div>;
 
   return (
     <div className="main-layout">
-      <Sidebar />
+      <Sidebar
+        dietSelected={dietFilter}
+        onDietChange={setDietFilter}
+        periodSelected={periodFilter}
+        onPeriodChange={setPeriodFilter}
+        regionSelected={regionFilter}
+        onRegionChange={setRegionFilter}
+        categorySelected={categoryFilter}
+        onCategoryChange={setCategoryFilter}
+        onResetFilters={onResetFilters}
+      />
+
       <main className="content">
         <header className="content-header">
           <h2>TODOS LOS DINOSAURIOS</h2>
