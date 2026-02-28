@@ -1,4 +1,3 @@
-// src/consts.ts
 
 export const PERIOD_FILTERS = {
   ALL: { literal: 'Todos', value: '' },
