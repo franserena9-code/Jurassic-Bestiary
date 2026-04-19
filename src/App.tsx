@@ -1,5 +1,5 @@
 import { Home } from "./views/Home";
-import { DetailView } from "./schemas/DetailView"; // Nota: Sería ideal mover esto a src/views/DetailView.tsx
+import { DetailView } from "./schemas/DetailView";
 import { MapView } from "./views/MapView";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";

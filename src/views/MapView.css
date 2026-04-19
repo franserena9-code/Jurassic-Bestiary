@@ -57,16 +57,14 @@
   overflow-x: auto;
   overflow-y: hidden;
   gap: 20px;
-  padding-bottom: 15px; /* Espacio para la barra de desplazamiento */
+  padding-bottom: 15px;
 }
 
-/* Asegura que las tarjetas no se encojan en el scroll horizontal */
 .dino-grid-map > * {
   min-width: 260px;
   flex-shrink: 0;
 }
 
-/* --- Responsividad --- */
 @media (max-width: 768px) {
   .map-view-header .back-button {
     position: static;

@@ -1,5 +1,4 @@
 .dino-card {
-  /* Degradado oscuro semitransparente sobre el pergamino (75% de oscuridad) */
   background-image: linear-gradient(
     color-mix(in srgb, var(--card-bg-start) 75%, transparent), 
     color-mix(in srgb, var(--card-bg-end) 75%, transparent)
@@ -7,7 +6,7 @@
   background-size: cover;
   background-position: center;
   border: 1px solid var(--border-color);
-  border-radius: 4px; /* Bordes más rectos como un libro */
+  border-radius: 4px;
   padding: 15px;
   text-align: center;
   cursor: pointer;
@@ -18,7 +17,7 @@
 .dino-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px var(--shadow-color);
-  border-color: var(--accent-color); /* Brillo dorado al pasar el ratón */
+  border-color: var(--accent-color);
 }
 
 .dino-card img {
@@ -27,28 +26,28 @@
   object-fit: cover;
   border-radius: 2px;
   border: 1px solid var(--map-fill);
-  filter: sepia(0.4) contrast(1.1) brightness(0.9); /* Efecto foto antigua */
+  filter: sepia(0.4) contrast(1.1) brightness(0.9);
   transition: filter 0.3s;
 }
 
 .dino-card:hover img {
-  filter: sepia(0) contrast(1.0) brightness(1); /* Se aclara al hacer hover */
+  filter: sepia(0) contrast(1.0) brightness(1);
 }
 
 .dino-card h2,
 .dino-card h3 {
-  font-size: 1.4rem; /* Tamaño reducido más proporcionado */
-  color: #ffffff; /* Letras blancas para que resalten al máximo */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Sombra oscura para separarlo del fondo */
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
   margin: 12px 0 8px 0;
-  letter-spacing: 1px; /* Un poco de separación para mayor claridad */
-  overflow-wrap: break-word; /* Permite que los nombres largos salten a la siguiente línea */
-  word-break: break-word; /* Fuerza el salto de línea si la palabra es más ancha que la tarjeta */
-  line-height: 1.2; /* Ajusta el espacio entre líneas para que quede bien cuando ocupa dos renglones */
+  letter-spacing: 1px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 .dino-card p {
-  color: var(--text-color); /* Un tono más claro que el anterior (que era apagado) */
+  color: var(--text-color);
   font-style: italic;
-  font-size: 1.1rem; /* Texto de la tarjeta más claro */
+  font-size: 1.1rem;
 }

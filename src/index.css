@@ -1,13 +1,11 @@
 :root {
-  /* Tipografía estilo libro antiguo */
   font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 18px; /* Aumenta el tamaño base de toda la interfaz */
-  line-height: 1.6; /* Mayor interlineado para mejorar la claridad */
+  font-size: 18px;
+  line-height: 1.6;
   font-weight: 400;
 
   color-scheme: dark;
   
-  /* Variables de Tema Oscuro (Defecto) */
   --bg-color: #1a1613;
   --text-color: #dcd3c6;
   --accent-color: #d4a373;
@@ -22,7 +20,6 @@
 
   color: var(--text-color);
   background-color: var(--bg-color);
-  /* Patrón muy sutil para dar textura de papel/cuero */
   background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 20px 20px;
 
@@ -32,7 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Barra de scroll temática para toda la aplicación */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -72,7 +68,7 @@ body::before {
   background-image: url('/mapamundi-antiguo.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.30; /* Reducimos la opacidad para el modo oscuro para que sea más sutil */
+  opacity: 0.30;
   z-index: -1;
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;
@@ -80,7 +76,7 @@ body::before {
 
 button, select, input {
   font-family: inherit;
-  font-size: 1rem; /* Fuerza a los controles a usar el nuevo tamaño base */
+  font-size: 1rem;
 }
 
 h1, h2, h3, h4, h5, h6 {

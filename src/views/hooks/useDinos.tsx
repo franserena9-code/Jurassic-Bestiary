@@ -1,4 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import type { Dino } from "../../types/Dino";
 import type {
   DietValue,
@@ -6,11 +7,8 @@ import type {
   RegionValue,
   CategoryValue,
 } from "../../consts";
-import { DinoResponseSchema } from "../../schemas/dino.ts";
 
 export const useDinos = () => {
-  const [dinosaurs, setDinosaurs] = useState<Dino[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const [dietFilter, setDietFilter] = useState<DietValue>("");
@@ -21,26 +19,27 @@ export const useDinos = () => {
 
   const DINOS_PER_PAGE = 10;
 
-  useEffect(() => {
-    const fetchDinos = async () => {
-      try {
-        // Nota: Para producción, mueve la carpeta "data" a "public/" y usa fetch("/data/dino.json")
-        const response = await fetch("/src/data/dino.json");
-        if (!response.ok) throw new Error("No se pudo cargar el JSON");
+  const { data: dinosaurs = [], isLoading: loading } = useQuery({
+    queryKey: ["dinosaurs"],
+    queryFn: async () => {
+      const response = await fetch(
+        "https://dinosaurios.codefreeapi.com/api/v1/dinosaurs?limit=100",
+        {
+          headers: {
+            "X-API-Key": "cfa_nWA8inHt9Ofn14Ezf251WzEdOJDn7dte",
+          },
+        },
+      );
+      if (!response.ok) throw new Error("No se pudo cargar el JSON de la API");
 
-        const rawData = await response.json();
+      const rawData = await response.json();
+      console.log(rawData);
 
-        const result = DinoResponseSchema.parse(rawData);
-        setDinosaurs(result.data as Dino[]);
-      } catch (error) {
-        console.error("Error cargando fósiles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDinos();
-  }, []);
+      return rawData.data as Dino[];
+    },
+    staleTime: 1000 * 60 * 60 * 24, // 24 horas
+    gcTime: 1000 * 60 * 60 * 24, // 24 horas
+  });
 
   const filteredDinos = useMemo(() => {
     return dinosaurs.filter((dino) => {

@@ -42,7 +42,6 @@
   position: relative;
 }
 
-/* Efecto de borde interior para que parezca una carta o libro */
 .detail-card::before {
   content: '';
   position: absolute;
@@ -62,7 +61,7 @@
 }
 
 .detail-info p {
-  font-size: 1.3rem; /* Letras notablemente más grandes para la descripción */
+  font-size: 1.3rem;
   margin: 0.8rem 0;
   line-height: 1.6;
 }
@@ -71,7 +70,6 @@
   color: var(--accent-color);
 }
 
-/* --- Responsividad --- */
 @media (max-width: 768px) {
   .detail-container {
     padding: 1rem;

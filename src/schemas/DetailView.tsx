@@ -3,11 +3,9 @@ import { useDino } from "../views/hooks/useDino";
 import "./DetailView.css";
 
 export const DetailView = () => {
-  // Extraemos el "id" de la URL (ej: /dinosaurio/720968c2-...)
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // Usamos el nuevo hook para obtener los datos
   const { dino, loading } = useDino(id);
 
   if (loading) return <div className="detail-message">Cargando fósil...</div>;

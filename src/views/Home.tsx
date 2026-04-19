@@ -33,7 +33,7 @@ export const Home = () => {
   if (loading) {
     return <div className="loading-message">Cargando dinosaurios...</div>;
   }
-
+  console.log(currentDinos);
   return (
     <div className="home-container">
       <header className="home-header">

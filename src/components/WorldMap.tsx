@@ -8,10 +8,8 @@ interface WorldMapProps {
   selectedRegion: RegionValue | "";
 }
 
-// URL del TopoJSON de alta definición con continentes
 const geoUrl = "/world-continents.json";
 
-// Diccionario para mapear los nombres en inglés del mapa HD a tus filtros en español
 const continentTranslations: Record<
   string,
   RegionValue | "Oceanía" | "Antártida"
@@ -47,7 +45,6 @@ export const WorldMap = ({ onRegionSelect, selectedRegion }: WorldMapProps) => {
                 const englishName = geo.properties.continent;
                 const mappedRegion = continentTranslations[englishName];
 
-                // Verificamos si es uno de los continentes que existen en tu dino.json
                 const isSelectable =
                   mappedRegion &&
                   mappedRegion !== "Oceanía" &&
