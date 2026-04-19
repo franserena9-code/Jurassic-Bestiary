@@ -1,0 +1,77 @@
+.map-view-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.map-view-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.map-view-header .back-button {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.map-view-header .back-button:hover {
+  color: var(--accent-hover);
+}
+
+.map-content-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.map-container {
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  background-color: var(--card-bg-start);
+  box-shadow: inset 0 0 20px var(--shadow-color);
+}
+
+.results-container {
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-bg-end);
+  border-radius: 4px;
+}
+
+.results-container h2 {
+  margin-top: 0;
+}
+
+.dino-grid-map {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 20px;
+  padding-bottom: 15px; /* Espacio para la barra de desplazamiento */
+}
+
+/* Asegura que las tarjetas no se encojan en el scroll horizontal */
+.dino-grid-map > * {
+  min-width: 260px;
+  flex-shrink: 0;
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  .map-view-header .back-button {
+    position: static;
+    display: inline-block;
+    transform: none;
+    margin-bottom: 15px;
+  }
+}

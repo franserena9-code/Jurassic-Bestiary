@@ -1,11 +1,30 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  /* Tipografía estilo libro antiguo */
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  font-size: 18px; /* Aumenta el tamaño base de toda la interfaz */
+  line-height: 1.6; /* Mayor interlineado para mejorar la claridad */
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  
+  /* Variables de Tema Oscuro (Defecto) */
+  --bg-color: #1a1613;
+  --text-color: #dcd3c6;
+  --accent-color: #d4a373;
+  --accent-hover: #f2c94c;
+  --card-bg-start: #2c251e;
+  --card-bg-end: #1f1a14;
+  --border-color: #5e4a30;
+  --border-hover: #8b6d47;
+  --map-fill: #4a3a25;
+  --text-muted: #a89f91;
+  --shadow-color: rgba(0,0,0,0.8);
+
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  /* Patrón muy sutil para dar textura de papel/cuero */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,63 +32,59 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Barra de scroll temática para toda la aplicación */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accent-color);
   text-decoration: inherit;
+  transition: color 0.2s;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--accent-hover);
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 100vw;
-  width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/mapamundi-antiguo.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.30; /* Reducimos la opacidad para el modo oscuro para que sea más sutil */
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+button, select, input {
   font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 1rem; /* Fuerza a los controles a usar el nuevo tamaño base */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-.dino-card img {
-  width: 80%;      
-  height: 50%;     
-  object-fit: cover; 
-  border-radius: 8px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', serif;
+  color: var(--accent-color);
+  text-shadow: 1px 1px 2px var(--shadow-color);
 }

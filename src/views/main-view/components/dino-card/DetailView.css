@@ -1,0 +1,81 @@
+.detail-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detail-message {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.back-button {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.detail-card {
+  background-color: var(--card-bg-start);
+  background-image: url('/pergamino.jpg');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  position: relative;
+}
+
+/* Efecto de borde interior para que parezca una carta o libro */
+.detail-card::before {
+  content: '';
+  position: absolute;
+  top: 10px; right: 10px; bottom: 10px; left: 10px;
+  border: 1px solid var(--map-fill);
+  pointer-events: none;
+}
+
+.detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin: 1rem 0;
+  border: 2px solid var(--bg-color);
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.detail-info p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.detail-info strong {
+  color: var(--accent-color);
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+  .detail-container {
+    padding: 1rem;
+  }
+
+  .detail-card {
+    padding: 1rem;
+  }
+}

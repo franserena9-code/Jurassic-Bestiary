@@ -1,0 +1,20 @@
+.world-map-svg {
+  width: 100%;
+  height: auto;
+  stroke: var(--bg-color);
+  stroke-width: 1.5;
+}
+
+.map-regions path {
+  fill: var(--map-fill);
+  cursor: pointer;
+  transition: fill 0.2s ease-in-out;
+}
+
+.map-regions path:hover {
+  fill: var(--border-hover);
+}
+
+.map-regions path.selected {
+  fill: var(--accent-color);
+}

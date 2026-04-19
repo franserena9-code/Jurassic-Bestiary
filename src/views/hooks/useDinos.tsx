@@ -1,11 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
-import type { Dino, DinoResponse } from "../../types/Dino";
+import type { Dino } from "../../types/Dino";
 import type {
   DietValue,
   PeriodValue,
   RegionValue,
   CategoryValue,
 } from "../../consts";
+import { DinoResponseSchema } from "../../schemas/dino.ts";
 
 export const useDinos = () => {
   const [dinosaurs, setDinosaurs] = useState<Dino[]>([]);
@@ -16,17 +17,21 @@ export const useDinos = () => {
   const [periodFilter, setPeriodFilter] = useState<PeriodValue>("");
   const [regionFilter, setRegionFilter] = useState<RegionValue>("");
   const [categoryFilter, setCategoryFilter] = useState<CategoryValue>("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const DINOS_PER_PAGE = 10;
 
   useEffect(() => {
     const fetchDinos = async () => {
       try {
-        const response = await fetch("src/data/dino.json");
+        // Nota: Para producción, mueve la carpeta "data" a "public/" y usa fetch("/data/dino.json")
+        const response = await fetch("/src/data/dino.json");
         if (!response.ok) throw new Error("No se pudo cargar el JSON");
 
-        const result: DinoResponse = await response.json();
-        setDinosaurs(result.data);
+        const rawData = await response.json();
+
+        const result = DinoResponseSchema.parse(rawData);
+        setDinosaurs(result.data as Dino[]);
       } catch (error) {
         console.error("Error cargando fósiles:", error);
       } finally {
@@ -44,10 +49,26 @@ export const useDinos = () => {
       const matchesRegion = regionFilter === "" || dino.region === regionFilter;
       const matchesCategory =
         categoryFilter === "" || dino.category === categoryFilter;
+      const matchesSearch =
+        searchQuery === "" ||
+        dino.name.toLowerCase().startsWith(searchQuery.toLowerCase());
 
-      return matchesDiet && matchesPeriod && matchesRegion && matchesCategory;
+      return (
+        matchesDiet &&
+        matchesPeriod &&
+        matchesRegion &&
+        matchesCategory &&
+        matchesSearch
+      );
     });
-  }, [dinosaurs, dietFilter, periodFilter, regionFilter, categoryFilter]);
+  }, [
+    dinosaurs,
+    dietFilter,
+    periodFilter,
+    regionFilter,
+    categoryFilter,
+    searchQuery,
+  ]);
 
   const totalPages = Math.ceil(filteredDinos.length / DINOS_PER_PAGE);
   const lastIndex = currentPage * DINOS_PER_PAGE;
@@ -67,11 +88,13 @@ export const useDinos = () => {
     setPeriodFilter("");
     setRegionFilter("");
     setCategoryFilter("");
+    setSearchQuery("");
     setCurrentPage(1);
   };
 
   return {
     currentDinos,
+    dinosaurs,
     loading,
     totalCount: filteredDinos.length,
     currentPage,
@@ -80,6 +103,11 @@ export const useDinos = () => {
     goToPrev,
     setCurrentPage,
     dietFilter,
+    searchQuery,
+    setSearchQuery: (val: string) => {
+      setSearchQuery(val);
+      setCurrentPage(1);
+    },
     setDietFilter: (val: DietValue) => {
       setDietFilter(val);
       setCurrentPage(1);
