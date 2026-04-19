@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Dino } from "../../types/Dino";
-import { DinoResponseSchema } from "../../schemas/dino";
+import { DinoSchema } from "../../schemas/dino";
 
 export const useDino = (id: string | undefined) => {
   const { data: dino = null, isLoading: loading } = useQuery({
@@ -8,19 +8,20 @@ export const useDino = (id: string | undefined) => {
     queryFn: async () => {
       if (!id) return null;
 
-      // Nota: Si la API lo permite, en el futuro podríamos optimizar esto para que haga fetch solo de /dinosaurs/${id}
-      const response = await fetch("https://dinosaurios.codefreeapi.com/api/v1/dinosaurs?limit=100", {
+      const response = await fetch(`https://dinosaurios.codefreeapi.com/api/v1/dinosaurs/${id}`, {
         headers: {
           "X-API-Key": "cfa_nWA8inHt9Ofn14Ezf251WzEdOJDn7dte"
         }
       });
-      if (!response.ok) throw new Error("No se pudo cargar el JSON");
+      
+      if (response.status === 404) return null; // Si no existe, devolvemos null tranquilamente
+      if (!response.ok) throw new Error("No se pudo cargar el dinosaurio desde la API");
 
       const rawData = await response.json();
-      const result = DinoResponseSchema.parse(rawData);
-
-      const foundDino = result.data.find((d) => d.id === id);
-      return (foundDino as Dino) || null;
+      
+      // La API suele devolver la info dentro de una propiedad "data" o el objeto directamente
+      const dinoData = rawData.data ? rawData.data : rawData;
+      return DinoSchema.parse(dinoData) as Dino;
     },
     enabled: !!id, // Evita ejecutar la query si el id no existe (ej. al inicio del render)
     staleTime: 1000 * 60 * 60 * 24, // Los datos se consideran "frescos" por 24 horas

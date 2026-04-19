@@ -15,9 +15,19 @@ export const DinoCard = ({ dino }: DinoCardProps) => {
       onClick={() => navigate(`/dinosaurio/${dino.id}`)}
     >
       <img
-        src={dino.image.replace(/^public\//, "/")}
-        alt={`Imagen de ${dino.name}`}
+        src={
+          dino.image
+            ? dino.image.replace(/^public\//, "/")
+            : "/Dinos Image/noImage.png"
+        }
+        alt={dino.name}
+        onError={(e) => {
+          if (!e.currentTarget.src.includes("noImage.png")) {
+            e.currentTarget.src = "/Dinos Image/noImage.png";
+          }
+        }}
       />
+
       <h3>{dino.name}</h3>
       <p>
         {dino.diet} • {dino.period}

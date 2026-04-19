@@ -20,9 +20,16 @@ export const DetailView = () => {
       <div className="detail-card">
         <h1>{dino.name}</h1>
         <img
-          src={dino.image.replace(/^public\//, "/")}
+          src={
+            dino.image
+              ? dino.image.replace(/^public\//, "/")
+              : "/Dinos Image/noImage.png"
+          }
           alt={`Imagen de ${dino.name}`}
           className="detail-image"
+          onError={(e) => {
+            e.currentTarget.src = "/Dinos Image/noImage.png";
+          }}
         />
         <div className="detail-info">
           <p>
