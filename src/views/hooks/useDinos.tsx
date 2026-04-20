@@ -17,7 +17,7 @@ export const useDinos = () => {
   const [categoryFilter, setCategoryFilter] = useState<CategoryValue>("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const DINOS_PER_PAGE = 10;
+  const DINOS_PER_PAGE = 12;
 
   const { data: dinosaurs = [], isLoading: loading } = useQuery({
     queryKey: ["dinosaurs"],
@@ -37,8 +37,8 @@ export const useDinos = () => {
 
       return rawData.data as Dino[];
     },
-    staleTime: 1000 * 60 * 60 * 24, // 24 horas
-    gcTime: 1000 * 60 * 60 * 24, // 24 horas
+    staleTime: 1000 * 60 * 60 * 24,
+    gcTime: 1000 * 60 * 60 * 24,
   });
 
   const filteredDinos = useMemo(() => {

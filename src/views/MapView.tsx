@@ -20,7 +20,20 @@ export const MapView = () => {
   }, [dinosaurs, selectedRegion]);
 
   if (loading) {
-    return <div className="loading-message">Cargando mapa...</div>;
+    return (
+      <div
+        className="loading-message"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          fontSize: "1.5rem",
+        }}
+      >
+        Desenterrando fósiles...
+      </div>
+    );
   }
 
   return (

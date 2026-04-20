@@ -31,7 +31,20 @@ export const Home = () => {
   } = useDinos();
 
   if (loading) {
-    return <div className="loading-message">Cargando dinosaurios...</div>;
+    return (
+      <div
+        className="loading-message"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+          fontSize: "1.5rem",
+        }}
+      >
+        Desenterrando fósiles...
+      </div>
+    );
   }
   console.log(currentDinos);
   return (

@@ -14,18 +14,17 @@ export const useDino = (id: string | undefined) => {
         }
       });
       
-      if (response.status === 404) return null; // Si no existe, devolvemos null tranquilamente
+      if (response.status === 404) return null;
       if (!response.ok) throw new Error("No se pudo cargar el dinosaurio desde la API");
 
       const rawData = await response.json();
       
-      // La API suele devolver la info dentro de una propiedad "data" o el objeto directamente
       const dinoData = rawData.data ? rawData.data : rawData;
       return DinoSchema.parse(dinoData) as Dino;
     },
-    enabled: !!id, // Evita ejecutar la query si el id no existe (ej. al inicio del render)
-    staleTime: 1000 * 60 * 60 * 24, // Los datos se consideran "frescos" por 24 horas
-    gcTime: 1000 * 60 * 60 * 24, // La caché se guarda durante 24 horas (antiguo cacheTime)
+    enabled: !!id,
+    staleTime: 1000 * 60 * 60 * 24,
+    gcTime: 1000 * 60 * 60 * 24,
   });
 
   return { dino, loading };
