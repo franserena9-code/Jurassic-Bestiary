@@ -39,10 +39,12 @@ export const Home = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          width: "100%",
           fontSize: "1.5rem",
+          color: "#ffffff",
         }}
       >
-        Desenterrando fósiles...
+        Excavando fósiles...
       </div>
     );
   }

@@ -68,7 +68,7 @@ body::before {
   background-image: url('/mapamundi-antiguo.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.30;
+  opacity: 0.70;
   z-index: -1;
   pointer-events: none;
   transition: opacity 0.4s ease-in-out;

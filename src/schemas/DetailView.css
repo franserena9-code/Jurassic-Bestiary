@@ -11,9 +11,9 @@
 }
 
 .back-button {
-  background-color: transparent;
+  background-color: var(--card-bg-start);
   color: var(--accent-color);
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--border-color);
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -21,6 +21,7 @@
   font-family: inherit;
   font-size: 1.1rem;
   transition: all 0.2s;
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .back-button:hover {
@@ -30,8 +31,8 @@
 
 .detail-card {
   background-image: linear-gradient(
-    color-mix(in srgb, var(--card-bg-start) 75%, transparent), 
-    color-mix(in srgb, var(--card-bg-end) 75%, transparent)
+    color-mix(in srgb, var(--card-bg-start) 50%, transparent), 
+    color-mix(in srgb, var(--card-bg-end) 50%, transparent)
   ), url('/pergamino.jpg');
   background-size: cover;
   background-position: center;
@@ -40,6 +41,7 @@
   padding: 2rem;
   box-shadow: 0 10px 30px var(--shadow-color);
   position: relative;
+  color: #ffffff;
 }
 
 .detail-card::before {
@@ -48,6 +50,12 @@
   top: 10px; right: 10px; bottom: 10px; left: 10px;
   border: 1px solid var(--map-fill);
   pointer-events: none;
+}
+
+.detail-card h1,
+.detail-card h2 {
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9);
 }
 
 .detail-image {
@@ -64,6 +72,8 @@
   font-size: 1.3rem;
   margin: 0.8rem 0;
   line-height: 1.6;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .detail-info strong {

@@ -8,7 +8,7 @@ export const DetailView = () => {
 
   const { dino, loading } = useDino(id);
 
-  if (loading) return <div className="detail-message">Cargando fósil...</div>;
+  if (loading) return <div className="detail-message">Excavando fósil...</div>;
   if (!dino)
     return <div className="detail-message">Dinosaurio no encontrado.</div>;
 

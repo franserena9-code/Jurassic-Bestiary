@@ -1,7 +1,7 @@
 .dino-card {
   background-image: linear-gradient(
-    color-mix(in srgb, var(--card-bg-start) 75%, transparent), 
-    color-mix(in srgb, var(--card-bg-end) 75%, transparent)
+    color-mix(in srgb, var(--card-bg-start) 10%, transparent), 
+    color-mix(in srgb, var(--card-bg-end) 10%, transparent)
   ), url('/pergamino.jpg');
   background-size: cover;
   background-position: center;
@@ -47,7 +47,8 @@
 }
 
 .dino-card p {
-  color: var(--text-color);
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   font-style: italic;
   font-size: 1.1rem;
 }

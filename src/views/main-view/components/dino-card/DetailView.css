@@ -28,11 +28,12 @@
 }
 
 .detail-card {
-  background-color: var(--card-bg-start);
-  background-image: url('/pergamino.jpg');
+  background-image: linear-gradient(
+    color-mix(in srgb, var(--card-bg-start) 50%, transparent), 
+    color-mix(in srgb, var(--card-bg-end) 50%, transparent)
+  ), url('/pergamino.jpg');
   background-size: cover;
   background-position: center;
-  background-blend-mode: multiply;
   border: 2px solid var(--border-color);
   border-radius: 4px;
   padding: 2rem;
@@ -40,7 +41,7 @@
   position: relative;
 }
 
-/* Efecto de borde interior para que parezca una carta o libro */
+
 .detail-card::before {
   content: '';
   position: absolute;
@@ -69,7 +70,7 @@
   color: var(--accent-color);
 }
 
-/* --- Responsividad --- */
+
 @media (max-width: 768px) {
   .detail-container {
     padding: 1rem;
